@@ -15,7 +15,7 @@ a_2 = [
 def circle(list):
     m_max = 0
     count = 0
-    for i in range(1, len(list)):
+    for i in range(len(list)):
         for j in list[i]:
             if abs(list[i].get(j)) > m_max:
                 m_max += 1
