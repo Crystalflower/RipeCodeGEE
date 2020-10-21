@@ -1,21 +1,25 @@
 a = [5, 1, 3, 6, 8, -2, 8, -1, 1, 18]
-rev_a = a[::-1]
-n = 10
+
 m = 3
-sum_m = 0
+n = 10
+
+a_2 = [1, 8, 9, 9, 9, 3, -5, 4]
+
+step = 4
+l = 8
 
 
-def calculate(list):
-    global sum_m
-    for i in range(0, len(list), m):
-        if i <= len(list) - m:
-            new = []
-            for j in range(m):
-                new.append(list[i + j])
-            if sum(new) > sum_m:
-                sum_m = sum(new)
+def calculate(sequence, param_1, param_2):
+    new_sequence = [sequence[i] for i in range(param_1)]  # генерируем список из m-элементов исходного
+    sum_s = sum(new_sequence)  # введем параметр суммы и сразу ее посчитаем
+    for i in range(param_1, param_2):  # перебираем оставшиеся элементы, для второго параметра также подойдет len(a)
+        del new_sequence[0]  # удаляем первый элемент новой последовательности
+        new_sequence.append(sequence[i])  # вставляем в конец следующий элемент начальной последовательности
+        if sum(new_sequence) > sum_s:
+            sum_s = sum(new_sequence)  # сравниваем сумму m-элементов и обновляем при большем значении
+    return sum_s
 
 
-calculate(a)
-calculate(rev_a)
-print(sum_m)
+print(calculate(a, m, n))
+
+print(calculate(a_2, step, l))
